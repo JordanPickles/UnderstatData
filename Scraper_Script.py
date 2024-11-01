@@ -28,7 +28,7 @@ class ShotDataScraper:
             for match in league_matches:
                 game_date = datetime.strptime(match['datetime'], '%Y-%m-%d %H:%M:%S')
                 today = datetime.today()
-                if game_date < today:
+                if game_date < today and match['goals']['h'] != None: #Accounts for future games and games that have been postponed
                     match_id_list.append({'id': match['id'], 'league': league})
 
         return match_id_list                
